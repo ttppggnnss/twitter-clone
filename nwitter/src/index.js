@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "components/App";
-import firebase from "firebase";
-console.log(firebase);
+// eslint-disable-next-line no-unused-vars
+import firebaseApp from "firebaseApp";
 
 ReactDOM.render(
   <React.StrictMode>
