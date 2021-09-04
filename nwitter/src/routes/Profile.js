@@ -11,7 +11,7 @@ const Profile = () => {
   };
   return (
     <>
-      <span>Profile</span>
+      <h1>Profile</h1>
       <button onClick={onLogOutClick}>Log Out</button>
     </>
   );

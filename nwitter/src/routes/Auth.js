@@ -76,7 +76,8 @@ const Auth = () => {
   };
 
   return (
-    <div>
+    <>
+      <h1>Home</h1>
       <form onSubmit={onSubmit}>
         <input
           name="email"
@@ -109,7 +110,7 @@ const Auth = () => {
         </button>
         {error2}
       </div>
-    </div>
+    </>
   );
 };
 
