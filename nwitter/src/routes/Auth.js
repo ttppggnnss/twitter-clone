@@ -3,6 +3,9 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
+  GithubAuthProvider,
 } from "firebase/auth";
 
 const Auth = () => {
@@ -10,6 +13,7 @@ const Auth = () => {
   const [password, setPassword] = useState("");
   const [newAccount, setNewAccount] = useState(true);
   const [error, setError] = useState("");
+  const [error2, setError2] = useState("");
 
   const onChange = (event) => {
     const {
@@ -53,6 +57,24 @@ const Auth = () => {
     setError("");
   };
 
+  const onSocialClick = async (event) => {
+    const auth = getAuth();
+    const {
+      target: { name },
+    } = event;
+    let provider;
+    if (name === "google") {
+      provider = new GoogleAuthProvider();
+      provider.addScope("https://www.googleapis.com/auth/contacts.readonly");
+    } else if (name === "github") {
+      provider = new GithubAuthProvider();
+      provider.addScope("repo");
+    }
+    await signInWithPopup(auth, provider).catch((error) => {
+      setError2(error.code.substr(5));
+    });
+  };
+
   return (
     <div>
       <form onSubmit={onSubmit}>
@@ -79,8 +101,13 @@ const Auth = () => {
         {newAccount ? "Go to Log In" : "Go to Create Account"}
       </button>
       <div>
-        <button>Continue with Google</button>
-        <button>Continue with Github</button>
+        <button name="google" onClick={onSocialClick}>
+          Continue with Google
+        </button>
+        <button name="github" onClick={onSocialClick}>
+          Continue with Github
+        </button>
+        {error2}
       </div>
     </div>
   );
