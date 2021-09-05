@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -6,71 +6,71 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   GithubAuthProvider,
-} from "firebase/auth";
+} from 'firebase/auth';
 
 const Auth = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [newAccount, setNewAccount] = useState(true);
-  const [error, setError] = useState("");
-  const [error2, setError2] = useState("");
+  const [error, setError] = useState('');
+  const [error2, setError2] = useState('');
 
-  const onChange = (event) => {
+  const onChange = event => {
     const {
       target: { name, value },
     } = event;
-    if (name === "email") {
+    if (name === 'email') {
       setEmail(value);
-    } else if (name === "password") {
+    } else if (name === 'password') {
       setPassword(value);
     }
   };
 
-  const onSubmit = async (event) => {
+  const onSubmit = async event => {
     event.preventDefault();
     const auth = getAuth();
     if (newAccount) {
       // create account
       await createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          const user = userCredential.user;
+        .then(userCredential => {
+          const { user } = userCredential;
           return user;
         })
-        .catch((error) => {
+        .catch(error => {
           setError(error.code.substr(5));
         });
     } else {
       // log in
       await signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          const user = userCredential.user;
+        .then(userCredential => {
+          const { user } = userCredential;
           return user;
         })
-        .catch((error) => {
+        .catch(error => {
           setError(error.code.substr(5));
         });
     }
   };
 
   const toggleAccount = () => {
-    setNewAccount((prev) => !prev);
-    setError("");
+    setNewAccount(prev => !prev);
+    setError('');
   };
 
-  const onSocialClick = async (event) => {
+  const onSocialClick = async event => {
     const auth = getAuth();
     const {
       target: { name },
     } = event;
     let provider;
-    if (name === "google") {
+    if (name === 'google') {
       provider = new GoogleAuthProvider();
-      provider.addScope("https://www.googleapis.com/auth/contacts.readonly");
-    } else if (name === "github") {
+      provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
+    } else if (name === 'github') {
       provider = new GithubAuthProvider();
-      provider.addScope("repo");
+      provider.addScope('repo');
     }
-    await signInWithPopup(auth, provider).catch((error) => {
+    await signInWithPopup(auth, provider).catch(error => {
       setError2(error.code.substr(5));
     });
   };
@@ -95,11 +95,11 @@ const Auth = () => {
           value={password}
           onChange={onChange}
         />
-        <input type="submit" value={newAccount ? "Create Account" : "Log In"} />
+        <input type="submit" value={newAccount ? 'Create Account' : 'Log In'} />
         {error}
       </form>
       <button onClick={toggleAccount}>
-        {newAccount ? "Go to Log In" : "Go to Create Account"}
+        {newAccount ? 'Go to Log In' : 'Go to Create Account'}
       </button>
       <div>
         <button name="google" onClick={onSocialClick}>

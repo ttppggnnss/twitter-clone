@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import AppRouter from "components/AppRouter";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import React, { useEffect, useState } from 'react';
+import AppRouter from 'components/AppRouter';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 function App() {
   const [init, setInit] = useState(false);
@@ -25,7 +25,7 @@ function App() {
       {init ? (
         <AppRouter isLoggedIn={isLoggedIn} userObj={userObj} />
       ) : (
-        "Initializing...."
+        'Initializing....'
       )}
       <footer>&copy; Nwitter {new Date().getFullYear()} </footer>
     </>

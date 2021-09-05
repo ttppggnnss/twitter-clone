@@ -1,14 +1,14 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { getAuth, signOut } from "firebase/auth";
-import { useHistory } from "react-router";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { getAuth, signOut } from 'firebase/auth';
+import { useHistory } from 'react-router';
 
 const Navigation = () => {
   const history = useHistory();
   const onLogOutClick = () => {
     const auth = getAuth();
     signOut(auth);
-    history.push("/");
+    history.push('/');
   };
   return (
     <nav>
