@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 // eslint-disable-next-line no-unused-vars
-import firebaseApp from 'firebaseApp';
+import firebaseApp from 'models/firebaseApp';
 import {
   getFirestore,
   collection,
@@ -12,11 +12,12 @@ import {
   limit,
   onSnapshot,
 } from 'firebase/firestore';
-import Nweet from 'components/Nweet';
+
+import Nweet from 'components/Home/Nweet';
 
 const db = getFirestore();
 
-const Home = ({ userObj }) => {
+const Main = ({ userObj }) => {
   const [nweet, setNweet] = useState('');
   const [nweets, setNweets] = useState([]);
   const [lastVisible, setLastVisible] = useState(null);
@@ -68,7 +69,7 @@ const Home = ({ userObj }) => {
       });
       setNweet('');
     } catch (e) {
-      console.error('Error adding document: ', e);
+      // console.error('Error adding document: ', e);
     }
   };
 
@@ -107,4 +108,4 @@ const Home = ({ userObj }) => {
   );
 };
 
-export default Home;
+export default Main;

@@ -1,12 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from 'components/App';
+import App from 'App';
 // eslint-disable-next-line no-unused-vars
-import firebaseApp from 'firebaseApp';
+import firebaseApp from 'models/firebaseApp';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root'),
-);
+ReactDOM.render(<App />, document.getElementById('root'));

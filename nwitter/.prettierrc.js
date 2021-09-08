@@ -6,7 +6,7 @@ module.exports = {
   //탭의 사용을 금하고 스페이스바 사용으로 대체하게 formatting
   useTabs: false,
   // 들여쓰기 너비는 2칸
-  tabWidth: 2,
+  tabWidth: 4,
   // 객체나 배열을 작성 할 때, 원소 혹은 key-valueㅇ의 맨 뒤에 있는 것에도 쉼표를 붙임
   trailingComma: 'all',
   // 코드 한줄이 maximum 100칸

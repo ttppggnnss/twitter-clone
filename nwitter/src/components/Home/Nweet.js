@@ -13,12 +13,12 @@ const Nweet = ({ nweetObj, isOwner, setNweets }) => {
   };
 
   const onDeleteClick = async () => {
-    const ok = confirm('Are you sure you want to delete this nweet');
-    if (ok) {
-      // delete nweet
-      await deleteDoc(doc(db, 'nweets', nweetObj.id));
-      setNweets([]);
-    }
+    // const ok = confirm('Are you sure you want to delete this nweet');
+    // if (ok) {
+    // delete nweet
+    await deleteDoc(doc(db, 'nweets', nweetObj.id));
+    setNweets([]);
+    // }
   };
 
   const onChange = (event) => {
