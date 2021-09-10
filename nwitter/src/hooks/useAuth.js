@@ -19,9 +19,10 @@ const useAuth = () => {
   const [error, setError] = useState('');
   const [error2, setError2] = useState('');
 
+  const auth = getAuth();
+
   const loginSignup = async (event, email, password) => {
     event.preventDefault();
-    const auth = getAuth();
     if (newAccount) {
       // create account
       await createUserWithEmailAndPassword(auth, email, password)
@@ -51,7 +52,6 @@ const useAuth = () => {
   };
 
   const onSocialClick = async (event) => {
-    const auth = getAuth();
     const {
       target: { name },
     } = event;
@@ -71,7 +71,6 @@ const useAuth = () => {
   const history = useHistory();
 
   const logout = () => {
-    const auth = getAuth();
     signOut(auth);
     history.push('/sign');
   };
@@ -79,7 +78,6 @@ const useAuth = () => {
   const [init, setInit] = useState(false);
   const [userObj, setUserObj] = useState(null);
   // check user state
-  const auth = getAuth();
   const onWatching = () => {
     onAuthStateChanged(auth, (user) => {
       if (user) {

@@ -4,7 +4,7 @@ module.exports = {
     es6: true,
     node: true,
   },
-  extends: ['airbnb', 'plugin:prettier/recommended', 'react-app'],
+  extends: ['airbnb', 'plugin:prettier/recommended'],
   plugins: ['prettier'],
   rules: {
     'import/no-unresolved': 0,

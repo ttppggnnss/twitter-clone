@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import AppRouter from 'routes/AppRouter';
+import Routes from 'routes';
 
 import useAuth from 'hooks/useAuth';
 
@@ -9,7 +9,7 @@ const App = () => {
     // check user state
     onWatching();
   }, [onWatching]);
-  return <>{init ? <AppRouter /> : 'Initializing....'}</>;
+  return <>{init ? <Routes /> : 'Initializing....'}</>;
 };
 
 export default App;

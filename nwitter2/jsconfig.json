@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "baseUrl": "./src"
+    },
+    "include": ["src"],
+    "exclude": ["node_modules"],
+    "typeAcquisition": {
+        "exclude": [
+            "dotenv",
+            "harmony-reflect",
+            "source-map",
+            "source-map-js",
+            "tsconfig-paths",
+            "agent-base",
+            "https-proxy-agent"
+        ]
+    }
+}
